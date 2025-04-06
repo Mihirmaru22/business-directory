@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Business - BizDirectory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
+    .animate-scaleUp {
+      animation: scaleUp 0.4s ease-in-out;
+    }
+    @keyframes scaleUp {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-bounceIn {
+      animation: bounceIn 0.6s ease-in-out forwards;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-indigo-600">BizDirectory</a>
+      <div class="space-x-6 hidden md:block">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-600">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-indigo-600">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Form Section -->
+  <main class="flex-grow pt-28 pb-16 px-4">
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold text-indigo-700 mb-6">Add a New Business</h2>
+      <form id="businessForm" class="space-y-4">
+        <input type="text" id="name" placeholder="Business Name" required class="w-full p-3 border rounded" />
+        <textarea id="description" rows="3" placeholder="Description" required class="w-full p-3 border rounded"></textarea>
+        <textarea id="varieties" rows="2" placeholder="Varieties / Offerings" class="w-full p-3 border rounded"></textarea>
+        <input type="text" id="location" placeholder="Location" class="w-full p-3 border rounded" />
+        <select id="category" required class="w-full p-3 border rounded">
+          <option disabled selected>Select a Category</option>
+          <option>Clothes</option>
+          <option>Electronics</option>
+          <option>Paint</option>
+          <option>Furniture</option>
+          <option>Groceries</option>
+          <option>Stationery</option>
+          <option>Automobiles</option>
+          <option>Beauty Products</option>
+          <option>Footwear</option>
+          <option>Pharmacy</option>
+        </select>
+        <input type="file" id="image" accept="image/*" class="w-full p-2 border rounded" />
+        <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded hover:bg-indigo-700 font-medium">Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Preview Modal -->
+  <div id="previewModal" class="modal-bg hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6 animate-scaleUp text-gray-700">
+      <h3 class="text-xl font-semibold text-indigo-600 mb-4 text-center">Preview Your Details</h3>
+      <div class="space-y-2">
+        <p><strong>Name:</strong> <span id="previewName"></span></p>
+        <p><strong>Description:</strong> <span id="previewDescription"></span></p>
+        <p><strong>Varieties:</strong> <span id="previewVarieties"></span></p>
+        <p><strong>Location:</strong> <span id="previewLocation"></span></p>
+        <p><strong>Category:</strong> <span id="previewCategory"></span></p>
+        <img id="previewImage" class="mt-3 max-w-xs rounded hidden mx-auto" />
+      </div>
+      <div class="mt-6 text-center">
+        <button id="confirmBtn" class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Accept & Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Confirmation -->
+  <div id="reviewMessage" class="fixed inset-0 bg-black text-white text-3xl flex items-center justify-center z-50 hidden">
+    <div class="animate-bounceIn text-center">
+      <p> Congratulations Your request is under review</p>
+    </div>
+  </div> 
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-4 shadow-inner text-sm text-gray-600">
+    © 2025 BizDirectory. All rights reserved.
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const form = document.getElementById('businessForm');
+    const previewModal = document.getElementById('previewModal');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const reviewMessage = document.getElementById('reviewMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      document.getElementById('previewName').textContent = document.getElementById('name').value;
+      document.getElementById('previewDescription').textContent = document.getElementById('description').value;
+      document.getElementById('previewVarieties').textContent = document.getElementById('varieties').value;
+      document.getElementById('previewLocation').textContent = document.getElementById('location').value;
+      document.getElementById('previewCategory').textContent = document.getElementById('category').value;
+
+      const imageInput = document.getElementById('image');
+      const imagePreview = document.getElementById('previewImage');
+
+      if (imageInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          imagePreview.src = event.target.result;
+          imagePreview.classList.remove('hidden');
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+      } else {
+        imagePreview.classList.add('hidden');
+      }
+
+      previewModal.classList.remove('hidden');
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      previewModal.classList.add('hidden');
+      reviewMessage.classList.remove('hidden');
+
+      setTimeout(() => {
+        window.location.href = 'index2.html';
+      }, 2500);
+    });
+  </script>
+</body>
+</html>

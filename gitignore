@@ -1,0 +1,18 @@
+# Node modules (in case you ever add npm packages)
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code config
+.vscode/
+
+# Build artifacts (if using tools like Vite, Parcel, or Webpack)
+dist/
+build/

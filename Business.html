@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Location & Categories</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 px-4 py-8">
+
+ <!-- Header: Location + Search + Add Business -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+    <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 justify-between">
+  
+      <!-- Location Selector -->
+      <div class="flex items-center gap-2 w-full md:w-auto">
+        <label class="text-sm font-medium text-gray-600">Location:</label>
+        <select class="px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option>Delhi</option>
+          <option>Mumbai</option>
+          <option>Bangalore</option>
+          <option>Hyderabad</option>
+          <option>Kolkata</option>
+        </select>
+      </div>
+  
+      <!-- Search Bar -->
+      <div class="relative w-full md:w-1/2">
+        <input
+          id="search"
+          type="text"
+          placeholder="Search businesses or categories..."
+          class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z" />
+        </svg>
+      </div>
+  
+      <!-- Add Business Button -->
+      <a
+        href="add.html"
+        class="inline-flex items-center gap-2 bg-indigo-600 text-white px-5 py-3 rounded-lg font-medium shadow hover:bg-indigo-700 transition"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Add Business
+      </a>
+  
+    </div>
+  </section>
+
+  <!-- Popular Categories -->
+  <section class="max-w-7xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-6">Popular Categories</h2>
+
+    <!-- Category Grid -->
+    <div id="category-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
+  </section>
+
+  <script>
+    const categories = [
+      { icon: "shirt", name: "Clothes", desc: "Trendy styles" },
+      { icon: "monitor", name: "Electronics", desc: "Latest gadgets" },
+      { icon: "paint-bucket", name: "Paint", desc: "Color your world" },
+      { icon: "sofa", name: "Furniture", desc: "Comfort at home" },
+      { icon: "shopping-cart", name: "Groceries", desc: "Daily essentials" },
+      { icon: "pen-tool", name: "Stationery", desc: "School & office" },
+      { icon: "car", name: "Automobiles", desc: "Buy & rent" },
+      { icon: "sparkles", name: "Beauty", desc: "Skincare & more" },
+      { icon: "shirt", name: "Footwear", desc: "Step up" },
+      { icon: "pill", name: "Pharmacy", desc: "Health needs" },
+      { icon: "dumbbell", name: "Fitness", desc: "Stay active" },
+      { icon: "book-open", name: "Books", desc: "Read & learn" },
+      { icon: "pizza", name: "Food", desc: "Crave & order" },
+      { icon: "tv", name: "Home Appliances", desc: "Cool gadgets" },
+      { icon: "camera", name: "Photography", desc: "Capture moments" },
+    ];
+
+    const container = document.getElementById("category-container");
+    const searchInput = document.getElementById("search");
+
+    function renderCategories(filter = "") {
+      container.innerHTML = "";
+
+      const filtered = categories.filter(cat =>
+        cat.name.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      if (filter && filtered.length === 0) {
+        container.innerHTML =
+          '<p class="text-gray-500 col-span-full">No categories found.</p>';
+      }
+
+      filtered.forEach(cat => {
+        const div = document.createElement("div");
+        div.className =
+          "bg-white rounded-xl p-6 shadow hover:shadow-lg transition flex flex-col items-center text-center";
+
+        div.innerHTML = `
+          <i data-lucide="${cat.icon}" class="text-indigo-600 w-10 h-10 mb-4"></i>
+          <h4 class="text-xl font-semibold">${cat.name}</h4>
+          <p class="text-sm text-gray-500 mt-1">${cat.desc}</p>
+        `;
+
+        container.appendChild(div);
+      });
+
+      lucide.createIcons();
+    }
+
+    searchInput.addEventListener("input", e => {
+      renderCategories(e.target.value);
+    });
+
+    renderCategories();
+  </script>
+</body>
+</html>
