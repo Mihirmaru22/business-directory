@@ -71,3 +71,17 @@ function getBusinesses() {
   
   window.onload = init;
   
+
+
+  function handleTilt(event, card) {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left - rect.width / 2;
+    const y = event.clientY - rect.top - rect.height / 2;
+    const rotateX = (-y / 20).toFixed(2);
+    const rotateY = (x / 20).toFixed(2);
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  }
+
+  function resetTilt(card) {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+  }

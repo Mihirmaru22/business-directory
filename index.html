@@ -51,8 +51,8 @@
                 <a href="#partners" class="hover:text-indigo-500 transition">Partners</a>
                 <a href="#testimonials" class="hover:text-indigo-500 transition">Testimonials</a>
                 <a href="#contact" class="hover:text-indigo-500 transition">Contact</a>
-                <a href="login.html" class="text-gray-700 hover:text-indigo-600">Login</a>
-                <a href="#"
+                <a href="pages/login.html" class="text-gray-700 hover:text-indigo-600">Login</a>
+                <a href="pages/signup.html"
                     class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl">Sign
                     Up</a>
             </nav>
@@ -68,47 +68,73 @@
             <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                 Discover leads, close deals, and accelerate your growth with our powerful B2B and B2C solutions.
             </p>
-            <a href="signup.html"
+            <a href="pages/signup.html"
                 class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-xl transform hover:scale-105">Request
                 a Demo</a>
         </div>
     </section>
 
 
-<!-- Top Businesses -->
+<!-- Modern Top Businesses Section -->
 <section class="bg-white py-20" id="businesses">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">Top Businesses</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-      <!-- 1. Ember (Smart Mug) -->
-      <div class="bg-gray-50 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-transform hover:scale-105">
-        <img src="https://seeklogo.com/images/E/ember-logo-13B4BD4B1C-seeklogo.com.png" class="w-16 h-16 mb-4" alt="Ember Logo">
-        <h3 class="text-xl font-semibold mb-2">Ember</h3>
-        <p class="text-gray-600">Smart mugs that keep your coffee at the perfect temperature all day long.</p>
-        <a href="#" class="mt-4 inline-block text-fuchsia-600 font-medium hover:text-fuchsia-800">Explore Ember →</a>
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16"> Top Businesses</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+  
+        <!-- Card Template -->
+        <div class="group perspective">
+          <div
+            class="card h-full flex flex-col justify-between transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 p-6 rounded-3xl shadow-lg"
+            onmousemove="handleTilt(event, this)"
+            onmouseleave="resetTilt(this)"
+          >
+            <div>
+              <img src="/assets/ember-logo.svg" class="w-20 h-20 mb-4 object-contain" alt="Ember Logo" />
+              <h3 class="text-2xl font-bold mb-2 group-hover:text-fuchsia-700 transition">Ember</h3>
+              <p class="text-gray-600 group-hover:text-gray-800 transition">Smart mugs that keep your coffee at the perfect temperature all day long.</p>
+            </div>
+            <a href="https://ember.com" class="mt-6 inline-block text-fuchsia-600 font-semibold hover:text-fuchsia-800 transition">Explore Ember →</a>
+          </div>
+        </div>
+  
+        <div class="group perspective">
+          <div
+            class="card h-full flex flex-col justify-between transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 p-6 rounded-3xl shadow-lg"
+            onmousemove="handleTilt(event, this)"
+            onmouseleave="resetTilt(this)"
+          >
+            <div>
+              <img src="/assets/final.png" class="w-24 h-20 mb-4 object-contain" alt="Bellroy Logo" />
+              <h3 class="text-2xl font-bold mb-2 group-hover:text-fuchsia-700 transition">Bellroy</h3>
+              <p class="text-gray-600 group-hover:text-gray-800 transition">Slim wallets, backpacks, and accessories crafted with premium sustainable materials.</p>
+            </div>
+            <a href="https://bellroy.com" class="mt-6 inline-block text-fuchsia-600 font-semibold hover:text-fuchsia-800 transition">Shop Bellroy →</a>
+          </div>
+        </div>
+  
+        <div class="group perspective">
+          <div
+            class="card h-full flex flex-col justify-between transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 p-6 rounded-3xl shadow-lg"
+            onmousemove="handleTilt(event, this)"
+            onmouseleave="resetTilt(this)"
+          >
+            <div>
+              <img src="https://ooni.com/cdn/shop/files/Ooni-PrimaryLogo-301x182-c1fe72b.png?v=1717008879&width=768" class="w-20 h-16 mb-4 object-contain" alt="Ooni Logo" />
+              <h3 class="text-2xl font-bold mb-2 group-hover:text-fuchsia-700 transition">Ooni</h3>
+              <p class="text-gray-600 group-hover:text-gray-800 transition">Portable pizza ovens that bring wood-fired flavor to your backyard in minutes.</p>
+            </div>
+            <a href="https://ooni.com" class="mt-6 inline-block text-fuchsia-600 font-semibold hover:text-fuchsia-800 transition">Fire up Ooni →</a>
+          </div>
+        </div>
+  
       </div>
-
-      <!-- 2. Bellroy (Wallets & Bags) -->
-      <div class="bg-gray-50 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-transform hover:scale-105">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bellroy_Logo_2022.svg/512px-Bellroy_Logo_2022.svg.png" class="w-16 h-16 mb-4 object-contain" alt="Bellroy Logo">
-        <h3 class="text-xl font-semibold mb-2">Bellroy</h3>
-        <p class="text-gray-600">Slim wallets, backpacks, and accessories crafted with premium sustainable materials.</p>
-        <a href="#" class="mt-4 inline-block text-fuchsia-600 font-medium hover:text-fuchsia-800">Shop Bellroy →</a>
-      </div>
-
-      <!-- 3. Ooni (Pizza Ovens) -->
-      <div class="bg-gray-50 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-transform hover:scale-105">
-        <img src="https://cdn.brandfolder.io/3RTK7E3K/at/v64nm6v9vjqbhp8kz49m4rf/ooni-logo-black.png" class="w-16 h-16 mb-4 object-contain" alt="Ooni Logo">
-        <h3 class="text-xl font-semibold mb-2">Ooni</h3>
-        <p class="text-gray-600">Portable pizza ovens that bring wood-fired flavor to your backyard in minutes.</p>
-        <a href="#" class="mt-4 inline-block text-fuchsia-600 font-medium hover:text-fuchsia-800">Fire up Ooni →</a>
-      </div>
-
     </div>
-  </div>
-</section>
-
+  </section>
+  
+  <!-- JavaScript for subtle tilt effect -->
+  <script>
+   
+  </script>
 
     <!-- Partners -->
     <section id="partners" class="py-12 bg-gray-50">
@@ -173,7 +199,7 @@
             <h2 class="text-4xl font-bold mb-4">🚀 Ready to Accelerate Your Pipeline?</h2>
             <p class="text-lg text-gray-600 mb-8">Join thousands of smart teams already using Trade Linker to grow faster
                 and smarter.</p>
-            <a href="#"
+            <a href="pages/signup.html"
                 class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-md hover:bg-indigo-700 hover:shadow-xl transition-all duration-200">Book
                 Your Demo</a>
         </div>
@@ -226,6 +252,8 @@
             easing: 'ease-in-out'
         });
     </script>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
