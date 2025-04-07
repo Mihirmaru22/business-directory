@@ -16,3 +16,5 @@ yarn-error.log*
 # Build artifacts (if using tools like Vite, Parcel, or Webpack)
 dist/
 build/
+
+.vscode/settings.json
